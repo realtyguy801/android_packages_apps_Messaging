@@ -17,11 +17,13 @@ package com.android.messaging.datamodel;
 
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.support.v4.app.NotificationCompat.WearableExtender;
@@ -116,7 +118,16 @@ public abstract class MessageNotificationState extends NotificationState {
 
     @Override
     public int getIcon() {
-        return R.drawable.ic_sms_light;
+        if (breathEnabled()) {
+            return R.drawable.stat_notify_sms_breath;
+        } else {
+            return R.drawable.ic_sms_light;
+        }
+     }
+
+     private static boolean breathEnabled() {
+         return Settings.System.getInt(Factory.get().getApplicationContext().getContentResolver(),
+                 Settings.System.KEY_SMS_BREATH, 0) == 1;
     }
 
     @Override
@@ -414,7 +425,11 @@ public abstract class MessageNotificationState extends NotificationState {
 
         @Override
         public int getIcon() {
-            return R.drawable.ic_sms_multi_light;
+            if (breathEnabled()) {
+                return R.drawable.stat_notify_sms_breath;
+            } else {
+                return R.drawable.ic_sms_multi_light;
+            }
         }
 
         @Override

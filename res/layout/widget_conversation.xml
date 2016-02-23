@@ -34,7 +34,7 @@
             style="@style/WidgetConversationTitle"
             android:layout_height="wrap_content"
             android:layout_width="0dip"
-            android:layout_weight = "1"
+            android:layout_weight ="1"
             android:layout_gravity="center_vertical"
             android:freezesText="true" />
         <ImageView
@@ -42,7 +42,7 @@
             android:src="@mipmap/ic_launcher"
             android:layout_height="wrap_content"
             android:layout_width="0dip"
-            android:layout_weight = "1"
+            android:layout_weight ="1"
             android:scaleType="fitStart"
             android:paddingTop="12dip"
             android:paddingBottom="12dip"

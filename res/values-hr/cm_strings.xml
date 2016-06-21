@@ -131,4 +131,6 @@
   <string name="operation_to_card_memory">Kopiraj poruku na SIM karticu</string>
   <string name="slot1">SIM 1</string>
   <string name="slot2">SIM 2</string>
+  <!-- Audio Library Tab for MMS attachments -->
+  <string name="mediapicker_audio_list_title">Odaberite audio</string>
 </resources>

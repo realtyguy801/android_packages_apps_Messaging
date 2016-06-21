@@ -131,4 +131,6 @@
   <string name="operation_to_card_memory">Kopiér besked til SIM-kort</string>
   <string name="slot1">SIM-kort 1</string>
   <string name="slot2">SIM-kort 2</string>
+  <!-- Audio Library Tab for MMS attachments -->
+  <string name="mediapicker_audio_list_title">Vælg lyd</string>
 </resources>

@@ -131,4 +131,8 @@
   <string name="operation_to_card_memory">Nachricht auf SIM-Karte kopieren</string>
   <string name="slot1">SIM 1</string>
   <string name="slot2">SIM 2</string>
+  <!-- Audio Library Tab for MMS attachments -->
+  <string name="mediapicker_galleryChooserDescription_cm">Wählen Sie Bilder oder Videos von diesem Gerät aus</string>
+  <string name="mediapicker_audioListChooserDescription">Wählen Sie Audiodateien von diesem Gerät aus</string>
+  <string name="mediapicker_audio_list_title_selection"><xliff:g id="count">%d</xliff:g> ausgewählt</string>
 </resources>

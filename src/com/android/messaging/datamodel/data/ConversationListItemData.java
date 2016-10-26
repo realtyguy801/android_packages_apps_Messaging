@@ -28,7 +28,9 @@ import com.android.messaging.datamodel.DatabaseHelper.ParticipantColumns;
 import com.android.messaging.datamodel.DatabaseWrapper;
 import com.android.messaging.datamodel.action.DeleteConversationAction;
 import com.android.messaging.util.Assert;
+import com.android.messaging.util.ContactUtil;
 import com.android.messaging.util.Dates;
+import com.android.messaging.util.NotificationUtil;
 import com.google.common.base.Joiner;
 
 import java.util.ArrayList;
@@ -66,6 +68,7 @@ public class ConversationListItemData {
     private String mDraftSubject;
     private String mSnippetSenderFirstName;
     private String mSnippetSenderDisplayDestination;
+    private boolean mIsEnterprise;
 
     public ConversationListItemData() {
     }
@@ -90,9 +93,11 @@ public class ConversationListItemData {
                 INDEX_OTHER_PARTICIPANT_NORMALIZED_DESTINATION);
         mSelfId = cursor.getString(INDEX_SELF_ID);
         mParticipantCount = cursor.getInt(INDEX_PARTICIPANT_COUNT);
-        mNotificationEnabled = cursor.getInt(INDEX_NOTIFICATION_ENABLED) == 1;
+        mNotificationEnabled = NotificationUtil.getConversationNotificationEnabled
+                (cursor.getInt(INDEX_NOTIFICATION_ENABLED));
         mNotificationSoundUri = cursor.getString(INDEX_NOTIFICATION_SOUND_URI);
-        mNotificationVibrate = cursor.getInt(INDEX_NOTIFICATION_VIBRATION) == 1;
+        mNotificationVibrate = NotificationUtil.getConversationNotificationVibrateEnabled(
+                cursor.getInt(INDEX_NOTIFICATION_VIBRATION));
         mIncludeEmailAddress = cursor.getInt(INDEX_INCLUDE_EMAIL_ADDRESS) == 1;
         mMessageStatus = cursor.getInt(INDEX_MESSAGE_STATUS);
         mMessageRawTelephonyStatus = cursor.getInt(INDEX_MESSAGE_RAW_TELEPHONY_STATUS);
@@ -117,6 +122,7 @@ public class ConversationListItemData {
         mSnippetSenderFirstName = cursor.getString(INDEX_SNIPPET_SENDER_FIRST_NAME);
         mSnippetSenderDisplayDestination =
                 cursor.getString(INDEX_SNIPPET_SENDER_DISPLAY_DESTINATION);
+        mIsEnterprise = cursor.getInt(INDEX_IS_ENTERPRISE) == 1;
     }
 
     public String getConversationId() {
@@ -155,8 +161,20 @@ public class ConversationListItemData {
         return mPreviewContentType;
     }
 
+    /**
+      * @see ConversationColumns#PARTICIPANT_CONTACT_ID
+      * @return the contact id of the participant if it is a 1:1 conversation, -1 for group.
+      */
     public long getParticipantContactId() {
         return mParticipantContactId;
+    }
+
+    /**
+     * @see ConversationColumns#IS_ENTERPRISE
+     * @return whether the conversation is enterprise.
+     */
+    public boolean isEnterprise() {
+        return mIsEnterprise;
     }
 
     public String getParticipantLookupKey() {
@@ -331,7 +349,9 @@ public class ConversationListItemData {
             + DatabaseHelper.PARTICIPANTS_TABLE + '.' + ParticipantColumns.FIRST_NAME
             + " as " + ConversationListViewColumns.SNIPPET_SENDER_FIRST_NAME + ", "
             + DatabaseHelper.PARTICIPANTS_TABLE + '.' + ParticipantColumns.DISPLAY_DESTINATION
-            + " as " + ConversationListViewColumns.SNIPPET_SENDER_DISPLAY_DESTINATION;
+            + " as " + ConversationListViewColumns.SNIPPET_SENDER_DISPLAY_DESTINATION + ", "
+            + DatabaseHelper.CONVERSATIONS_TABLE + '.' + ConversationColumns.IS_ENTERPRISE
+            + " as " + ConversationListViewColumns.IS_ENTERPRISE;
 
     private static final String JOIN_PARTICIPANTS =
             " LEFT JOIN " + DatabaseHelper.PARTICIPANTS_TABLE + " ON ("
@@ -390,6 +410,7 @@ public class ConversationListItemData {
         static final String SNIPPET_SENDER_FIRST_NAME = "snippet_sender_first_name";
         static final String SNIPPET_SENDER_DISPLAY_DESTINATION =
                 "snippet_sender_display_destination";
+        static final String IS_ENTERPRISE = ConversationColumns.IS_ENTERPRISE;
     }
 
     public static final String[] PROJECTION = {
@@ -422,6 +443,7 @@ public class ConversationListItemData {
         ConversationListViewColumns.MESSAGE_RAW_TELEPHONY_STATUS,
         ConversationListViewColumns.SNIPPET_SENDER_FIRST_NAME,
         ConversationListViewColumns.SNIPPET_SENDER_DISPLAY_DESTINATION,
+        ConversationListViewColumns.IS_ENTERPRISE,
     };
 
     private static final int INDEX_ID = 0;
@@ -453,8 +475,19 @@ public class ConversationListItemData {
     private static final int INDEX_MESSAGE_RAW_TELEPHONY_STATUS = 26;
     private static final int INDEX_SNIPPET_SENDER_FIRST_NAME = 27;
     private static final int INDEX_SNIPPET_SENDER_DISPLAY_DESTINATION = 28;
+    private static final int INDEX_IS_ENTERPRISE = 29;
 
     private static final String DIVIDER_TEXT = ", ";
+
+    public static boolean hasAnyEnterpriseContact(
+             final List<ParticipantData> participants) {
+         for (final ParticipantData participant : participants) {
+             if (ContactUtil.isEnterpriseContactId(participant.getContactId())) {
+                 return true;
+             }
+         }
+         return false;
+     }
 
     /**
      * Get a conversation from the local DB based on the conversation id.

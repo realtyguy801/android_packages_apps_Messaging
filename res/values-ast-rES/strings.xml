@@ -19,6 +19,9 @@
   <!-- The name of the application as it appears under the main Launcher icon and in various activity titles -->
   <!-- The name of the application as it appears in external share intent dialogs -->
   <!-- The title when selecting a conversation to share to -->
+  <string name="action_settings">Axustes</string>
+  <string name="settings_with_arrow">Axustes &gt;</string>
+  <string name="settings">Axustes</string>
   <!-- Inform user of the names of permissions that are required to use the app -->
   <!-- The tab header for the frequently used contacts list -->
   <!-- The tab header for all contacts list -->
@@ -33,6 +36,7 @@
         Example: "Delete messages older than a week"
     -->
   <!-- Title of the class-0 message activity. -->
+  <string name="save">Guardar</string>
   <!-- Text for SMS storage low text, when auto delete is enabled -->
   <!-- Title for SMS storage low notification and dialog. Must match the framework's notification title, i.e. //frameworks/base/core/res/res/values/strings.xml#low_internal_storage_view_title -->
   <!-- Text for SMS storage low notification and dialog -->
@@ -55,7 +59,9 @@
   <!-- Title line for an MMS auto-downloading. -->
   <!-- Title line for MMS which failed to download. -->
   <!-- Timestamp line for MMS which failed to download. -->
+  <string name="message_status_download_failed">Calca pa tentalo de nueves</string>
   <!-- Timestamp line for MMS which failed to download. -->
+  <string name="message_status_download">Calca pa baxar</string>
   <!-- Timestamp line for MMS which is selected. -->
   <!-- Timestamp line to display while downloading a message. -->
   <!-- Timestamp line for MMS for expired or invalid message. -->
@@ -96,6 +102,7 @@
   <!-- Alert dialog title to accept or decline deleting conversation(s). -->
   <!-- Alert dialog accept deleting this conversation button. -->
   <!-- Alert dialog decline deleting this conversation button. -->
+  <string name="delete_conversation_decline_button">Encaboxar</string>
   <!-- Hint text for the recipient chips text box when it's empty -->
   <!-- Action menu title for multiple selection in gallery image picker -->
   <!-- Action menu title for confirming multiple selection in gallery image picker -->
@@ -134,16 +141,19 @@
   <!-- Accessibility description for conversation list for 1:1 conversations -->
   <!-- Accessibility description for conversation list for group conversations -->
   <!-- Accessibility description for conversation list for failed messages -->
+  <string name="failed_message_content_description">Fallu al unviar el mensaxe. Calca pa retentar.</string>
   <!-- Accessibility name for a group conversation -->
   <!-- Accessibility : text read on the small X icon on the subject editor -->
   <!-- Description shown in the download manager for an attachment that the user manually saved -->
   <!-- Title for the preferences/settings activity -->
+  <string name="settings_activity_title">Axustes</string>
   <!-- Title for the archived conversations activity -->
   <!-- Action title: Close -->
   <!-- Preference category: MMS messaging -->
   <!-- Preference category: Advanced -->
   <!-- Preference category: Debug -->
   <!-- Title for the preference for whether or to notify the user of new messages -->
+  <string name="notifications_enabled_pref_title">Avisos</string>
   <!-- Title for the notification sound preference -->
   <!-- What to display in the settings screen for Ringtone when the user chooses "silent" [CHAR LIMIT=100]-->
   <!-- Title for the preference for whether or not to vibrate with notifications -->
@@ -156,6 +166,7 @@
   <!-- Display text for phone number preference when the number is unknown -->
   <!-- Title for the preference for playing a message send sound -->
   <!-- Strings for dump sms/mms dialog -->
+  <string name="wireless_alerts_title">Alertes inalámbriques</string>
   <!-- Title of long press menu on an individual message. -->
   <!-- Menu item to copy message text -->
   <!-- Title of long press menu for details about an individual message. -->
@@ -175,6 +186,7 @@
   <!-- Label in "Message details" dialog -->
   <!-- "Priority" value in "Message details" dialog -->
   <!-- "Priority" value in "Message details" dialog -->
+  <string name="priority_normal">Normal</string>
   <!-- "Priority" value in "Message details" dialog -->
   <!-- SIM identified using the slot number. e.g. SIM 1 -->
   <!-- Sender to be used if the sender address has been hidden -->
@@ -202,6 +214,7 @@
   <!-- The format of the subtitle of the help activity. -->
   <!--  Action menu title to let users view open source license -->
   <!-- Title for the per-conversation preference for whether or to notify the user of new messages -->
+  <string name="notifications_enabled_conversation_pref_title">Avisos</string>
   <!-- Reached MMS message attachment limit -->
   <!-- Message attachment load failed -->
   <!-- Alert dialog title to accept or decline adding the given phone number to your contacts. -->
@@ -231,6 +244,7 @@
   <!-- Dialog message that indicates user must be granted permissions from the phone owner to
          send SMS messages. -->
   <!-- Dialog button text that closes the application. -->
+  <string name="requires_sms_permissions_close_button">ACEUTAR</string>
   <!-- Toast text when creating a conversation with more participants than MMS/SMS config permits -->
   <!-- Toast text when creating a conversation with an invalid participant -->
   <!-- Error toast message shown when a camera image failed to attach to the message -->
@@ -276,6 +290,7 @@
   <!-- Accessibility : Content description for deleting a recipient chip. -->
   <!-- Label for new message button in share intent dialog -->
   <!-- Label for new message button in share intent dialog -->
+  <string name="share_cancel">Encaboxar</string>
   <!-- Screen title after user selects APNs setting option -->
   <!-- Edit access point label summary text when no value has been set -->
   <!-- Edit access point labels: A label the user can give to the APN to allow him to differentiate it from the others -->
@@ -308,7 +323,9 @@
   <!-- The title for general settings section in the settings activity  -->
   <!-- The title for advanced settings section in the settings activity  -->
   <!-- The title for general settings activity  -->
+  <string name="general_settings_activity_title">Axustes xenerales</string>
   <!-- The title for advanced settings activity  -->
+  <string name="advanced_settings_activity_title">Axustes avanzaos</string>
   <!-- The title for sim_specific settings  -->
   <!-- The group MMS choices in settings -->
   <!-- SIM number shown in the settings when the number is not known -->
@@ -332,6 +349,7 @@
   <!-- Toast message telling the user a conversation has been deleted -->
   <!-- Displayed when user adds a new conversation widget. Tapping on the widget in this
           mode will bring user to the conversation selection screen -->
+  <string name="tap_to_configure">Desanicióse la conversación. Calca p\'amosar una conversación diferente de Mensaxes</string>
   <!-- Toast message telling the user that someone was blocked -->
   <!-- Toast message telling the user that someone was unblocked -->
   <!-- Title for attachment chooser activity -->
